@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ユーザ新規登録</title>
+
+</head>
+<body>
+
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">ユーザ名さん</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">ログアウト</a>
+  </li>
+</ul>
+
+ログイン画面
+<form action="/Example/FormSampleServlet" method="post">
+ログインID：<input type="text" name="id"><br>
+パスワード：<input type="text" name="pass"><br>
+パスワード（確認）：<input type="text" name="passCon"><br>
+ユーザ名：<input type="text" name="userName"><br>
+生年月日：<input type="text" name="birth"><br>
+
+<br>
+<input type="submit" value="登録">
+
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">戻る</a>
+  </li>
+
+</ul>
+</form>
+</body>
+</html>
