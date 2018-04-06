@@ -92,7 +92,57 @@ public class UserDao {
 
 
 
-            return new User(Integer.parseInt(detailId) , loginIdData, nameData, birthDateData,passwordData, createDateData,updateDateData);
+            return new User(Integer.parseInt(detailId) , loginIdData, nameData, birthDateData,passwordData, createDateData,updateDateData, updateDateData, updateDateData);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+    }
+
+
+
+    public User findByMentorInfo(String detailId) {
+        Connection conn = null;
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+            // SELECT文を準備
+            String sql = "SELECT * FROM user WHERE id = ?";
+
+             // SELECTを実行し、結果表を取得
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setString(1, detailId);
+
+            ResultSet rs = pStmt.executeQuery();
+
+
+             // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
+            if (!rs.next()) {
+                return null;
+            }
+
+            String loginIdData = rs.getString("login_id");
+            String nameData = rs.getString("name");
+            Date birthDateData = rs.getDate("birth_date");
+            String createDateData = rs.getString("create_date");
+            String passwordData  = rs.getString("password");
+            String updateDateData = rs.getString("update_date");
+            String profileData =  rs.getString("profile");
+            String pictureData =  rs.getString("picture");
+
+            return new Mentor(Integer.parseInt(detailId) , loginIdData, nameData, birthDateData,passwordData, createDateData,updateDateData,profileData, pictureData);
 
         } catch (SQLException e) {
             e.printStackTrace();

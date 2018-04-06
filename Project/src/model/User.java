@@ -15,6 +15,8 @@ public class User {
 	private String password;
 	private String createDate;
 	private String updateDate;
+	private String profile;
+	private String picture;
 
 	// ログインセッションを保存するためのコンストラクタ
 	public User(String loginId, String name) {
@@ -23,7 +25,7 @@ public class User {
 	}
 
 	// 全てのデータをセットするコンストラクタ
-	public User(int id, String loginId, String name, Date birthDate, String password, String createDate, String updateDate) {
+	public User(int id, String loginId, String name, Date birthDate, String password, String createDate, String updateDate, String profileData, String pictureData) {
 		this.id = id;
 		this.loginId = loginId;
 		this.name = name;
@@ -31,6 +33,8 @@ public class User {
 		this.password = password;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
+		this.profile = profile;
+		this.picture = picture;
 	}
 	public int getId() {
 		return id;
